@@ -1,0 +1,180 @@
+:root {
+  --pink: #ff6b9d;
+  --deep: #c44569;
+  --soft: #ffe3ee;
+  --cream: #fff7fb;
+  --ink: #4a2230;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--cream), var(--soft));
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ---------- Floating hearts ---------- */
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.hearts span {
+  position: absolute;
+  bottom: -40px;
+  font-size: 1.4rem;
+  opacity: 0;
+  animation: float-up linear infinite;
+}
+@keyframes float-up {
+  0%   { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.7; }
+  100% { transform: translateY(-110vh) scale(1.1) rotate(40deg); opacity: 0; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 1;
+}
+.eyebrow {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--deep);
+  margin-bottom: 1rem;
+}
+.title {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(3rem, 12vw, 7rem);
+  color: var(--deep);
+  line-height: 1.05;
+  text-shadow: 0 6px 24px rgba(196, 69, 105, 0.25);
+  animation: pop 1s ease both;
+}
+.subtitle {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  margin: 1rem 0 2rem;
+  color: var(--pink);
+  font-weight: 300;
+}
+.cta {
+  display: inline-block;
+  background: var(--pink);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 10px 24px rgba(255, 107, 157, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cta:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(255, 107, 157, 0.55); }
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--deep);
+  animation: bob 1.6s ease-in-out infinite;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+.section-title {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  text-align: center;
+  color: var(--deep);
+  margin-bottom: 2.5rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 107, 157, 0.25);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 50px rgba(196, 69, 105, 0.12);
+}
+.card p { margin-bottom: 1.1rem; }
+.signoff {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.6rem;
+  color: var(--deep);
+  text-align: right;
+}
+
+/* ---------- Reasons grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+.reason-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 107, 157, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.reason-card:hover { transform: translateY(-8px); box-shadow: 0 18px 36px rgba(196, 69, 105, 0.18); }
+.reason-card .emoji { font-size: 2.6rem; display: block; margin-bottom: 0.8rem; }
+.reason-card h3 { color: var(--deep); margin-bottom: 0.5rem; }
+.reason-card p { font-size: 0.92rem; font-weight: 300; }
+
+/* ---------- Quote ---------- */
+.quote blockquote {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  text-align: center;
+  color: var(--deep);
+  line-height: 1.4;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 3rem 1rem 4rem;
+  color: var(--deep);
+}
+.footer .small { font-size: 0.8rem; opacity: 0.7; margin-top: 0.4rem; }
+.beat { display: inline-block; animation: beat 1.2s ease-in-out infinite; }
+
+/* ---------- Reveal on scroll ---------- */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ---------- Keyframes ---------- */
+@keyframes pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+@keyframes beat { 0%,100% { transform: scale(1); } 25% { transform: scale(1.25); } 50% { transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
